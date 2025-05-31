@@ -1,0 +1,30 @@
+name: Scrape Eurofos CCCP13
+
+on:
+  schedule:
+    - cron: "0 5 * * *"  # Tous les jours à 5h du matin
+  workflow_dispatch:     # Permet de lancer manuellement
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Cloner le repo
+      uses: actions/checkout@v3
+
+    - name: Installer Python + dépendances
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Lancer le script de scraping
+      run: python3 scrape_eurofos.py
+
+    - name: Commit du JSON généré
+      run: |
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        git add eurofos.json
+        git commit -m "Mise à jour automatique eurofos.json" || echo "Rien à valider"
+        git push
