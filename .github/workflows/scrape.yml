@@ -1,9 +1,15 @@
+
 name: Scrape Eurofos CCCP13
 
 on:
   schedule:
-    - cron: "0 5 * * *"  # Tous les jours à 5h du matin
-  workflow_dispatch:     # Permet aussi de lancer manuellement
+    - cron: "0 5 * * *"   # 7h (heure France)
+    - cron: "0 8 * * *"   # 10h
+    - cron: "0 11 * * *"  # 13h
+    - cron: "0 13 * * *"  # 15h
+    - cron: "0 16 * * *"  # 18h
+    - cron: "0 19 * * *"  # 21h
+  workflow_dispatch:      # Lancement manuel possible
 
 jobs:
   scrape:
@@ -13,13 +19,13 @@ jobs:
     - name: Cloner le repo
       uses: actions/checkout@v3
 
-    - name: Installer Python + dépendances
+    - name: Installer Playwright
       run: |
-        python3 -m pip install --upgrade pip
-        pip install requests beautifulsoup4
+        pip install playwright
+        playwright install chromium
 
     - name: Lancer le script de scraping
-      run: python3 scrape_eurofos.py
+      run: python3 scrape_eurofos_playwright.py
 
     - name: Commit du JSON généré s’il a changé
       run: |
