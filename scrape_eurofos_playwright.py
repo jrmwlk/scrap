@@ -1,43 +1,32 @@
+
 import json
 from playwright.sync_api import sync_playwright
 
 def run():
     with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page()
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(ignore_https_errors=True)
+        page = context.new_page()
+
+        # Connexion
         page.goto("https://www.cccp13.fr/embouestV38/")
+        page.fill("input[type='text']", "LOGIN")
+        page.fill("input[type='password']", "PASSWORD")
 
-        # Connexion (identifiants vides, interface ouverte)
-        page.click("input[type='submit']")
+        # Attendre et cliquer sur "Embauche"
+        page.get_by_role("link", name="Embauche").click()
 
-        # Attente et clic sur le bouton "Embauche"
-        page.wait_for_selector("text=Embauche", timeout=10000)
-        page.click("text=Embauche")
+        # Attendre le chargement des données visibles
+        page.wait_for_timeout(3000)
 
-        # Attente de la page chargée (à ajuster selon le DOM réel)
-        page.wait_for_timeout(2000)
+        # Exemple de récupération de données (à adapter)
+        content = page.content()
 
-        # Extraction (exemple à ajuster selon la structure réelle de la page)
-        data = {
-            "2025-06-01": {
-                "parc": {
-                    "S1": 4,
-                    "S2": 3,
-                    "S3": 2,
-                    "JV": 1,
-                    "total_JV_JD": 2
-                },
-                "portiques": {
-                    "S1": 6,
-                    "S2": 5,
-                    "S3": 3
-                }
-            }
-        }
-
+        data = {"status": "connecté", "html": content}
         with open("eurofos.json", "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=2)
 
+        context.close()
         browser.close()
 
 if __name__ == "__main__":
