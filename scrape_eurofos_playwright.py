@@ -14,12 +14,11 @@ async def run():
         await page.keyboard.press("Tab")
         await page.keyboard.type("EUROFOS")
 
-
         # Clic sur "Embauche"
         await page.locator('form[name="index"] button').first.click()
-        
+
         # Attente du tableau
-        await page.wait_for_selector("table tr", timeout=3000)
+        await page.wait_for_selector("table tr", timeout=5000)
 
         # Debug HTML
         html_content = await page.content()
@@ -31,32 +30,34 @@ async def run():
         data = {"gemfos": [], "portiques": []}
 
         for row in rows:
-            html = await row.inner_html()
+            try:
+                html = await row.inner_html()
+                if "PARC / CAVALIER" in html:
+                    cells = await row.locator("td >> nth=2").all()
+                    shift = await row.locator("td >> nth=1").inner_text()
 
-            if "PARC / CAVALIER" in html:
-                cells = await row.locator("td >> nth=2").all()
-                shift = await row.locator("td >> nth=1").inner_text()
+                    if len(cells) >= 2:
+                        numbers = await row.locator("td >> nth=2").all_inner_texts()
+                        if len(numbers) >= 3:
+                            total = numbers[0]
+                            gemfos = numbers[2]
+                            data["gemfos"].append({
+                                "shift": shift.strip(),
+                                "total": total.strip(),
+                                "gemfos": gemfos.strip()
+                            })
 
-                if len(cells) >= 2:
-                    numbers = await row.locator("td >> nth=2").all_inner_texts()
-                    if len(numbers) >= 3:
-                        total = numbers[0]
-                        gemfos = numbers[2]
-                        data["gemfos"].append({
-                            "shift": shift.strip(),
-                            "total": total.strip(),
-                            "gemfos": gemfos.strip()
-                        })
-
-            if any(p in html for p in ["P07", "P08", "PS0", "PS1", "PS2", "PS3", "PS4", "PS5"]):
-                shift = await row.locator("td >> nth=1").inner_text()
-                bateau = await row.locator("td >> nth=2").inner_text()
-                portique = await row.locator("td >> nth=0").inner_text()
-                data["portiques"].append({
-                    "shift": shift.strip(),
-                    "bateau": bateau.strip(),
-                    "portique": portique.strip()
-                })
+                if any(p in html for p in ["P07", "P08", "PS0", "PS1", "PS2", "PS3", "PS4", "PS5"]):
+                    shift = await row.locator("td >> nth=1").inner_text()
+                    bateau = await row.locator("td >> nth=2").inner_text()
+                    portique = await row.locator("td >> nth=0").inner_text()
+                    data["portiques"].append({
+                        "shift": shift.strip(),
+                        "bateau": bateau.strip(),
+                        "portique": portique.strip()
+                    })
+            except Exception as e:
+                print(f"Erreur sur une ligne : {e}")
 
         with open("eurofos.json", "w") as f:
             json.dump(data, f, indent=2)
