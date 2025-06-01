@@ -31,7 +31,7 @@ jobs:
 
     - name: Générer eurofos.json avec total et renfort
       run: |
-        python3 -c "
+        python3 <<EOF
 import json
 from collections import defaultdict
 
@@ -59,7 +59,7 @@ output = {
 
 with open('eurofos.json', 'w') as f:
     json.dump(output, f, indent=2)
-"
+EOF
 
     - name: Commit du fichier structuré
       run: |
