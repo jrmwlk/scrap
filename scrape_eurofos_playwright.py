@@ -11,7 +11,7 @@ def run():
         page = context.new_page()
 
         try:
-            page.goto("https://cccpi13.fr", timeout=60000)
+            page.goto("https://www.cccp13.fr/embouestV38/", timeout=60000)
             page.wait_for_selector("input[name='login']", timeout=60000)
             page.screenshot(path="screenshot.png")
 
