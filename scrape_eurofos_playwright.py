@@ -16,8 +16,7 @@ async def run():
 
 
         # Clic sur "Embauche"
-        await page.wait_for_timeout(500)
-        await page.locator('button.image-button').nth(0).click()
+        await page.locator('form[name="index"] button').first.click()
         
         # Attente du tableau
         await page.wait_for_selector("table")
