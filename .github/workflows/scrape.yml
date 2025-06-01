@@ -1,27 +1,27 @@
+
 name: scrape
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 7 * * *"
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
+          python-version: '3.10'
 
       - name: Install Playwright + Python tools
         run: |
           pip install playwright
           playwright install chromium
 
-      - name: Lancer le script de scraping
+      - name: Run scraping script
         run: python3 scrape_eurofos_playwright.py
 
       - name: Commit eurofos.json if changed
@@ -29,5 +29,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add eurofos.json || echo "Pas de changement"
-          git commit -m "Mise à jour automatique eurofos.json" || echo "Pas de commit"
+          git commit -m "Mise à jour automatique eurofos.json" || echo "Rien à valider"
           git push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
