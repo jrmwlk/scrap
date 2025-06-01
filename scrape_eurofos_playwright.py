@@ -1,54 +1,56 @@
+
+import asyncio
+from playwright.async_api import async_playwright
 import json
-from playwright.sync_api import sync_playwright
 
-USERNAME = "013"
-PASSWORD = "EUROFOS"
-
-def run():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(ignore_https_errors=True)
-        page = context.new_page()
-        page.goto("https://www.cccp13.fr/embouestV38/")
+async def run():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        context = await browser.new_context(ignore_https_errors=True)
+        page = await context.new_page()
+        await page.goto("https://www.cccp13.fr/embouestV38/", timeout=60000)
 
         # Connexion
-        page.fill("input[type='text']", USERNAME)
-        page.fill("input[type='password']", PASSWORD)
+        await page.fill('input[type="text"]', "013")
+        await page.fill('input[type="password"]', "EUROFOS")
+        await page.click('input[type="submit"]')
 
-        # Clique sur le bouton "Embauche"
-        page.get_by_role("link", name="Embauche").click()
+        # Clic sur le bouton "Embauche"
+        await page.get_by_role("link", name="Embauche").click()
 
-        page.wait_for_load_state("networkidle")
+        # Attente du tableau
+        await page.wait_for_selector("table")
 
-        # Extraction
-        rows = page.locator("table tr").all()
-        shifts = {}
-        portiques = []
+        # Récupération des données
+        rows = await page.locator("table tr").all()
+        data = {"gemfos": {}, "portiques": []}
 
         for row in rows:
-            text = row.inner_text()
-            if "PARC / CAVALIER" in text:
-                columns = text.split("\n")
-                folio = columns[0].strip()
-                shift = columns[1].strip()
-                values = list(map(int, columns[4:7]))
-                if shift not in shifts:
-                    shifts[shift] = {"TOTAL": 0, "GEMFOS": 0}
-                shifts[shift]["TOTAL"] += values[0]
-                shifts[shift]["GEMFOS"] += values[2]
-            elif any(p in text for p in ["P07", "P08", "PS0", "PS1", "PS2", "PS3", "PS4", "PS5"]):
-                columns = text.split("\n")
-                shift = columns[1].strip()
-                navire = columns[3].strip() if len(columns) > 3 else ""
-                portiques.append({"shift": shift, "navire": navire})
+            html = await row.inner_html()
+            if "PARC / CAVALIER" in html:
+                cells = await row.locator("td").all()
+                if len(cells) >= 2:
+                    shift = await cells[1].inner_text()
+                    numbers = await row.locator("td >> nth=1 >> table tr").all()
+                    if len(numbers) >= 3:
+                        total = await numbers[0].inner_text()
+                        gemfos = await numbers[2].inner_text()
+                        data["gemfos"][shift.strip()] = {
+                            "total": total.strip(),
+                            "gemfos": gemfos.strip()
+                        }
+
+            if any(p in html for p in ["P07", "P08", "PS0", "PS1", "PS2", "PS3", "PS4", "PS5"]):
+                shift = await row.locator("td >> nth=1").inner_text()
+                bateau = await row.locator("td >> nth=2").inner_text()
+                data["portiques"].append({
+                    "shift": shift.strip(),
+                    "bateau": bateau.strip()
+                })
 
         with open("eurofos.json", "w") as f:
-            json.dump({
-                "cavalier": shifts,
-                "portiques": portiques
-            }, f, indent=2)
+            json.dump(data, f)
 
-        browser.close()
+        await browser.close()
 
-if __name__ == "__main__":
-    run()
+asyncio.run(run())
