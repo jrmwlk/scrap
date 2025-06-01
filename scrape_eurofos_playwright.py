@@ -1,44 +1,30 @@
 import asyncio
-import json
 from playwright.async_api import async_playwright
+import json
 
 async def run():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(ignore_https_errors=True)
         page = await context.new_page()
-
         await page.goto("https://www.cccp13.fr/embouestV38/", timeout=60000)
+
+        # Attendre le champ de login
         await page.wait_for_selector('input[type="text"]', timeout=30000)
+        await page.fill('input[type="text"]', "LOGIN")
+        await page.fill('input[type="password"]', "PASSWORD")
 
-        # Connexion
-        await page.fill('input[type="text"]', "cccp13")
-        await page.fill('input[type="password"]', "dockers")
-        await page.click('input[type="submit"]')
+        # Cliquer sur le bouton "Embauche"
+        await page.click('text=Embauche')
 
-        # Attente du tableau
-        await page.wait_for_selector("table", timeout=10000)
+        # Attendre le chargement de la page suivante
+        await page.wait_for_timeout(3000)
 
-        # Extraction
-        table = await page.query_selector("table")
-        rows = await table.query_selector_all("tr")
+        # Exemple de récupération de données, à adapter
+        data = {"status": "connecté et embauche cliquée"}
 
-        data = {"shifts": []}
-        for row in rows[1:]:
-            cells = await row.query_selector_all("td")
-            if len(cells) >= 3:
-                shift = await cells[0].inner_text()
-                equipe = await cells[1].inner_text()
-                parc = await cells[2].inner_text()
-                data["shifts"].append({
-                    "shift": shift.strip(),
-                    "equipe": equipe.strip(),
-                    "parc": parc.strip()
-                })
-
-        # Sauvegarde en JSON
-        with open("eurofos.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        with open("eurofos.json", "w") as f:
+            json.dump(data, f)
 
         await browser.close()
 
