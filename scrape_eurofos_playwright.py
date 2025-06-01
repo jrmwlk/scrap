@@ -8,12 +8,11 @@ async def run():
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(ignore_https_errors=True)
         page = await context.new_page()
-        await page.goto("https://www.cccp13.fr/embouestV38/", timeout=60000)
+        await page.goto("https://www.cccp13.fr/embouestV38/", timeout=30000)
 
         # Connexion
         await page.fill('input[type="text"]', "013")
         await page.fill('input[type="password"]', "EUROFOS")
-        await page.click('input[type="submit"]')
 
         # Clic sur le bouton "Embauche"
         await page.get_by_role("link", name="Embauche").click()
