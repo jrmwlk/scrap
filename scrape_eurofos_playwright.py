@@ -19,7 +19,7 @@ async def run():
         await page.locator('form[name="index"] button').first.click()
         
         # Attente du tableau
-        await page.wait_for_selector("table")
+        await page.wait_for_selector("table tr", timeout=3000)
 
         # Debug HTML
         html_content = await page.content()
