@@ -60,5 +60,3 @@ async def run():
             json.dump(data, f, indent=2)
 
         await browser.close()
-
-if __name
