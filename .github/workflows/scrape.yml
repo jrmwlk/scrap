@@ -27,14 +27,10 @@ jobs:
     - name: Lancer le script de scraping
       run: python3 scrape_eurofos_playwright.py
 
-    - name: Commit du JSON généré s’il a changé
+    - name: Commit du JSON généré (même si nouveau fichier)
       run: |
-        if ! git diff --quiet eurofos.json; then
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add eurofos.json
-          git commit -m "Mise à jour automatique eurofos.json"
-          git push
-        else
-          echo "Aucun changement détecté dans eurofos.json"
-        fi
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        git add eurofos.json
+        git commit -m "Création ou mise à jour du fichier eurofos.json" || echo "Aucun changement à commit"
+        git push
