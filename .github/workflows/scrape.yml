@@ -3,12 +3,12 @@ name: Scrape Eurofos CCCP13
 
 on:
   schedule:
-    - cron: "0 5 * * *"   # 7h (heure France)
-    - cron: "0 8 * * *"   # 10h
-    - cron: "0 11 * * *"  # 13h
-    - cron: "0 13 * * *"  # 15h
-    - cron: "0 16 * * *"  # 18h
-    - cron: "0 19 * * *"  # 21h
+    - cron: "0 5 * * *"
+    - cron: "0 8 * * *"
+    - cron: "0 11 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 16 * * *"
+    - cron: "0 19 * * *"
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       with:
         persist-credentials: false
 
-    - name: Installer Playwright
+    - name: Installer Playwright + outils
       run: |
         pip install playwright
         playwright install chromium
@@ -29,11 +29,43 @@ jobs:
     - name: Lancer le script de scraping
       run: python3 scrape_eurofos_playwright.py
 
-    - name: Commit du JSON généré (même si nouveau fichier)
+    - name: Générer eurofos.json avec total et renfort
+      run: |
+        python3 -c "
+import json
+from collections import defaultdict
+
+with open('eurofos.json') as f:
+    data = json.load(f)
+
+shifts = ['S1', 'S2', 'S3', 'JV']
+parc = {shift: {'renfort': 0, 'total': 0} for shift in shifts}
+latest_entries = {}
+
+for entry in data:
+    shift = entry['shift']
+    zone = entry['zone']
+    parc[shift]['total'] += 1
+    key = (entry['date'], shift, zone)
+    latest_entries[key] = entry
+
+for (_, shift, _), _ in latest_entries.items():
+    parc[shift]['renfort'] += 1
+
+output = {
+    'date': data[0]['date'] if data else '',
+    'parc': parc
+}
+
+with open('eurofos.json', 'w') as f:
+    json.dump(output, f, indent=2)
+"
+
+    - name: Commit du fichier structuré
       run: |
         git config user.name "github-actions"
         git config user.email "actions@github.com"
         git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
         git add eurofos.json
-        git commit -m "Création ou mise à jour du fichier eurofos.json" || echo "Aucun changement à commit"
+        git commit -m "Mise à jour du fichier structuré eurofos.json" || echo "Aucun changement à commit"
         git push origin HEAD:main
