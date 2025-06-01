@@ -16,8 +16,8 @@ async def run():
 
 
         # Clic sur "Embauche"
-        await page.locator("button[onclick*=\"Function.value='E'\"]").click()
-
+        await page.locator("button[onclick*=\"sFunction.value='E'\"]").click()
+        
         # Attente du tableau
         await page.wait_for_selector("table")
 
