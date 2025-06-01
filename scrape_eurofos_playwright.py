@@ -11,11 +11,11 @@ async def run():
         await page.goto("https://www.cccp13.fr/embouestV38/", timeout=30000)
 
         # Connexion
-        await page.fill('input[type="text"]', "013")
-        await page.fill('input[type="password"]', "EUROFOS")
+        await page.locator('input[name="identog"]').fill("013")
+        await page.locator('input[name="mdp"]').fill("EUROFOS")
 
         # Clic sur le bouton "Embauche"
-        await page.locator('button:has-text("Embauche")').click()
+        await page.locator('button[onclick*="sFunction.value=\'E\'"]').click()
 
         # Attente du tableau
         await page.wait_for_selector("table")
