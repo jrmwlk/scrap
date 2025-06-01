@@ -14,10 +14,9 @@ def run():
         # Connexion
         page.fill("input[type='text']", USERNAME)
         page.fill("input[type='password']", PASSWORD)
-        page.click('button:has-text("Embauche")')
 
         # Clique sur le bouton "Embauche"
-        page.click("text=Embauche")
+        page.get_by_role("link", name="Embauche").click()
 
         page.wait_for_load_state("networkidle")
 
