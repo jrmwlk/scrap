@@ -1,50 +1,42 @@
-
 import asyncio
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
-from datetime import datetime
+from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeoutError
 import json
+from datetime import datetime
 
-def run():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(ignore_https_errors=True)
-        page = context.new_page()
-
+async def run():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch_persistent_context(user_data_dir="/tmp/playwright", headless=True, ignore_https_errors=True)
+        page = await browser.new_page()
         try:
-            page.goto("https://www.cccp13.fr/embouestV38/", timeout=60000)
-            page.wait_for_selector("input[name='login']", timeout=60000)
-            page.screenshot(path="screenshot.png")
+            await page.goto("https://cccp13.fr", timeout=60000)
+            await page.fill('input[name="login"]', "identifiant")
+            await page.fill('input[name="password"]', "motdepasse")
+            await page.click('input[type="submit"]')
+            await page.wait_for_selector('text="Embauche"', timeout=60000)
+            await page.click('text="Embauche"')
+            await page.wait_for_timeout(3000)
+            html = await page.content()
 
-            page.fill("input[name='login']", "votre_identifiant")
-            page.fill("input[name='password']", "votre_mot_de_passe")
-            page.click("button[type='submit']")
-
-            page.wait_for_timeout(5000)
-            page.screenshot(path="dashboard.png")
-
+            # Traitement fictif simplifié
             data = {
-                "date": datetime.today().strftime("%Y-%m-%d"),
+                "date": datetime.today().strftime('%Y-%m-%d'),
                 "parc": {
-                    "gemfos": 4,
-                    "total": 8
+                    "S1": {"renfort": 1, "total": 8},
+                    "S2": {"renfort": 4, "total": 8},
+                    "JD": {"renfort": 0, "total": 10}
                 },
-                "portiques": [
-                    {
-                        "portique": "P1",
-                        "bateau": "NAVIRE AF",
-                        "nb": 3
-                    }
-                ]
+                "portiques": {
+                    "S1": [{"portique": "P1", "bateau": "NAVIRE A", "nb": 3}]
+                }
             }
 
             with open("eurofos.json", "w") as f:
                 json.dump(data, f, indent=2)
 
         except PlaywrightTimeoutError as e:
-            print("Erreur durant le scraping :", e)
-            page.screenshot(path="error.png")
-        finally:
-            browser.close()
+            print(f"Erreur de timeout : {e}")
+        except Exception as e:
+            print(f"Erreur générale : {e}")
+        await browser.close()
 
-if __name__ == "__main__":
-    run()
+asyncio.run(run())
