@@ -14,7 +14,7 @@ def run():
         # Connexion
         page.fill("input[type='text']", USERNAME)
         page.fill("input[type='password']", PASSWORD)
-        page.click("input[type='submit']")
+        page.click('button:has-text("Embauche")')
 
         # Clique sur le bouton "Embauche"
         page.click("text=Embauche")
