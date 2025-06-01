@@ -10,8 +10,10 @@ async def run():
         await page.goto("https://www.cccp13.fr/embouestV38/", timeout=30000)
 
         # Connexion
-        await page.locator("input[name='identog']").fill("013")
-        await page.locator("input[name='mdp']").fill("EUROFOS")
+        await page.keyboard.type("013")
+        await page.keyboard.press("Tab")
+        await page.keyboard.type("EUROFOS")
+
 
         # Clic sur "Embauche"
         await page.locator("button[onclick*=\"Function.value='E'\"]").click()
