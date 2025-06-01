@@ -1,31 +1,44 @@
-import asyncio
-from playwright.async_api import async_playwright
 import json
+from playwright.sync_api import sync_playwright
 
-async def run():
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(ignore_https_errors=True)
-        page = await context.new_page()
-        await page.goto("https://www.cccp13.fr/embouestV38/", timeout=60000)
+def run():
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        page.goto("https://www.cccp13.fr/embouestV38/")
 
-        # Attendre le champ de login
-        await page.wait_for_selector('input[type="text"]', timeout=30000)
-        await page.fill('input[type="text"]', "LOGIN")
-        await page.fill('input[type="password"]', "PASSWORD")
+        # Connexion (identifiants vides, interface ouverte)
+        page.click("input[type='submit']")
 
-        # Cliquer sur le bouton "Embauche"
-        await page.click('text=Embauche')
+        # Attente et clic sur le bouton "Embauche"
+        page.wait_for_selector("text=Embauche", timeout=10000)
+        page.click("text=Embauche")
 
-        # Attendre le chargement de la page suivante
-        await page.wait_for_timeout(3000)
+        # Attente de la page chargée (à ajuster selon le DOM réel)
+        page.wait_for_timeout(2000)
 
-        # Exemple de récupération de données, à adapter
-        data = {"status": "connecté et embauche cliquée"}
+        # Extraction (exemple à ajuster selon la structure réelle de la page)
+        data = {
+            "2025-06-01": {
+                "parc": {
+                    "S1": 4,
+                    "S2": 3,
+                    "S3": 2,
+                    "JV": 1,
+                    "total_JV_JD": 2
+                },
+                "portiques": {
+                    "S1": 6,
+                    "S2": 5,
+                    "S3": 3
+                }
+            }
+        }
 
         with open("eurofos.json", "w") as f:
             json.dump(data, f)
 
-        await browser.close()
+        browser.close()
 
-asyncio.run(run())
+if __name__ == "__main__":
+    run()
