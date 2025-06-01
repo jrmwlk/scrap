@@ -15,7 +15,7 @@ async def run():
         await page.fill('input[type="password"]', "EUROFOS")
 
         # Clic sur le bouton "Embauche"
-        await page.get_by_role("link", name="Embauche").click()
+        await page.locator('button:has-text("Embauche")').click()
 
         # Attente du tableau
         await page.wait_for_selector("table")
