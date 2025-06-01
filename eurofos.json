@@ -1,1 +1,40 @@
-{"status": "connect\u00e9 et embauche cliqu\u00e9e"}
+{
+  "gemfos": [],
+  "portiques": [
+    {
+      "shift": "",
+      "bateau": "",
+      "portique": "Mensuels/Portiqueurs\n\n\nFOLIO\tSHIFT\t\nNAVIRE / PARC\t\tPOSTE\n\tACTIONS\n388468\tS1\t\nPARC / CAVALIER\tD2\nSTR\n8 \u00a0\n7 \u00a0\n1 \u00a0\n\n\n\t\n388475\tS1\t\nPARC / GUERITE\tD2\nLI\n2 \u00a0\n2 \u00a0\n\u00a0\n\n\n\t\n388482\tS1\t\nPARC / GARE\tD2\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nSPE\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388485\tS1\t\nPARC / VIDE\tD2\nSPV\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388512\tS1\t\nPREPARATION TRAVAIL\tD2\nCNI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nCEX\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388469\tJD\t\nPARC / CAVALIER\tD2\nSTR\n10 \u00a0\n10 \u00a0\n\u00a0\n\n\n\t\n388478\tJD\t\nPARC / GUERITE\tD2\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388487\tJV\t\nPARC CFS\tDarse 2 CFS\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nSPE\n3 \u00a0\n3 \u00a0\n\u00a0\n\n\n\t\n388473\tS2\t\nPARC / CAVALIER\tD2\nSTR\n8 \u00a0\n4 \u00a0\n4 \u00a0\n\n\n\t\n388480\tS2\t\nPARC / GUERITE\tD2\nLI\n2 \u00a0\n2 \u00a0\n\u00a0\n\n\n\t\n388483\tS2\t\nPARC / GARE\tD2\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nSPE\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388486\tS2\t\nPARC / VIDE\tD2\nSPV\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388525\tS2\t\nSTRADDLE NAVIRE\tD2\nCNI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nRLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nSTR\n8 \u00a0\n\u00a0\n8 \u00a0\n\t\nRST\n2 \u00a0\n\u00a0\n2 \u00a0\n\t\nCEX\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388526\n\nPS4\tS2\t\nEVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS4\n\t\n388527\n\nPS5\tS2\t\nEVER GLORY\tD2\nCM\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS5\n\t\n388537\tS2\t\nEVER GLORY\tD2\nCM\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n2 \u00a0\n\u00a0\n\n\n\t\n388538\tS2\t\nMAINTENANCE\tD2\nCPO\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\nVENIR A 13H\n\t\n388484\tS3\n\nNuit du 02 au 03\t\nPARC / GARE\tD2\nSPG\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\nVOIR SPE A 15H\n\t\n388539\tS3\n\nNuit du 02 au 03\t\nSTRADDLE NAVIRE\tD2\nCNI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nRLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nSTR\n8 \u00a0\n\u00a0\n8 \u00a0\n\t\nRST\n2 \u00a0\n\u00a0\n2 \u00a0\n\t\nRFS\n2 \u00a0\n\u00a0\n2 \u00a0\n\t\nCEX\n1 \u00a0\n1 \u00a0\n\u00a0\n\n\n\t\n388540\n\nPS4\tS3\n\nNuit du 02 au 03\t\nEVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS4\n\t\n388541\n\nPS5\tS3\n\nNuit du 02 au 03\t\nEVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS5\n\t\n388543\n\nPS0\tS3\n\nNuit du 02 au 03\t\nEVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS0\n\t\n388550\n\nPS1\tS3\n\nNuit du 02 au 03\t\nCMA CGM GRACE BAY\tD2\nCM\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n1 \u00a0\n1 \u00a0\n\n\nPS1"
+    },
+    {
+      "shift": "S2",
+      "bateau": "EVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS4",
+      "portique": "388526\n\nPS4"
+    },
+    {
+      "shift": "S2",
+      "bateau": "EVER GLORY\tD2\nCM\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS5",
+      "portique": "388527\n\nPS5"
+    },
+    {
+      "shift": "S3\n\nNuit du 02 au 03",
+      "bateau": "EVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS4",
+      "portique": "388540\n\nPS4"
+    },
+    {
+      "shift": "S3\n\nNuit du 02 au 03",
+      "bateau": "EVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS5",
+      "portique": "388541\n\nPS5"
+    },
+    {
+      "shift": "S3\n\nNuit du 02 au 03",
+      "bateau": "EVER GLORY\tD2\nCM\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nLI\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n\u00a0\n2 \u00a0\n\n\nPS0",
+      "portique": "388543\n\nPS0"
+    },
+    {
+      "shift": "S3\n\nNuit du 02 au 03",
+      "bateau": "CMA CGM GRACE BAY\tD2\nCM\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nLI\n1 \u00a0\n1 \u00a0\n\u00a0\n\t\nHCB\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nHCT\n1 \u00a0\n\u00a0\n1 \u00a0\n\t\nDK\n6 \u00a0\n\u00a0\n6 \u00a0\n\t\nCPO\n2 \u00a0\n1 \u00a0\n1 \u00a0\n\n\nPS1",
+      "portique": "388550\n\nPS1"
+    }
+  ]
+}
