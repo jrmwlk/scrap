@@ -1,8 +1,14 @@
-
 name: Scrape Eurofos CCCP13
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+    - cron: "0 8 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 16 * * *"
+    - cron: "0 19 * * *"
 
 jobs:
   scrape:
@@ -23,7 +29,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add eurofos.json || echo "Pas de fichier à ajouter"
+          git add eurofos.json || echo "Aucun fichier à ajouter"
           git commit -m "Mise à jour automatique eurofos.json" || echo "Pas de changement"
           git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
-          git push || echo "Rien à push"
+          git push || echo "Push échoué (aucun changement ou problème de token)"
