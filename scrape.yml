@@ -1,0 +1,35 @@
+name: Scrape Eurofos CCCP13
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+    - cron: "0 8 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 16 * * *"
+    - cron: "0 19 * * *"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloner le repo
+        uses: actions/checkout@v3
+
+      - name: Installer Playwright + Python tools
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Lancer le script de scraping
+        run: python3 scrape_eurofos_playwright.py
+
+      - name: Commit eurofos.json if changed
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add eurofos.json || echo "Aucun fichier à ajouter"
+          git commit -m "Mise à jour automatique eurofos.json" || echo "Pas de changement"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
+          git push || echo "Push échoué (aucun changement ou problème de token)"
