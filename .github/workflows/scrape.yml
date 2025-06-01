@@ -1,4 +1,4 @@
-name: scrape
+name: Scrape Eurofos CCCP13
 
 on:
   workflow_dispatch:
@@ -11,17 +11,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
-      - name: Install Playwright + Python tools
+          python-version: "3.12"
+      - name: Install Playwright + tools
         run: |
           pip install playwright
-          playwright install
+          playwright install chromium
       - name: Run scraping script
-        run: python3 scrape_eurofos_playwright.py
+        run: python scrape_eurofos_playwright.py
       - name: Commit eurofos.json if changed
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add eurofos.json
-          git diff --cached --quiet || git commit -m "Mise à jour automatique eurofos.json"
-          git push
+          git add eurofos.json || true
+          git diff --staged --quiet || git commit -m "Mise à jour automatique eurofos.json"
+          git push || true
