@@ -1,0 +1,302 @@
+[
+  {
+    "date": "2025-06-02",
+    "shift": "",
+    "zone": "",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "",
+    "zone": "Mensuels/Portiqueurs",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "SHIFT",
+    "zone": "NAVIRE / PARC\t\tPOSTE",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "",
+    "zone": "POSTE",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S1",
+    "zone": "PARC / CAVALIER\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "STR",
+    "zone": "8",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S1",
+    "zone": "PARC / GUERITE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "LI",
+    "zone": "2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S1",
+    "zone": "PARC / GARE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "LI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S1",
+    "zone": "PARC / VIDE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "SPV",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S1",
+    "zone": "PREPARATION TRAVAIL\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CNI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "JD",
+    "zone": "PARC / CAVALIER\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "STR",
+    "zone": "10",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "JD",
+    "zone": "PARC / GUERITE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "LI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "JV",
+    "zone": "PARC CFS\tDarse 2 CFS",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "LI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "PARC / CAVALIER\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "STR",
+    "zone": "8",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "PARC / GUERITE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "LI",
+    "zone": "2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "PARC / GARE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "LI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "PARC / VIDE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "SPV",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "STRADDLE NAVIRE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CNI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "EVER GLORY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "EVER GLORY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "EVER GLORY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S2",
+    "zone": "MAINTENANCE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CPO",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S3\n\nNuit du 02 au 03",
+    "zone": "PARC / GARE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "SPG",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S3\n\nNuit du 02 au 03",
+    "zone": "STRADDLE NAVIRE\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CNI",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S3\n\nNuit du 02 au 03",
+    "zone": "EVER GLORY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S3\n\nNuit du 02 au 03",
+    "zone": "EVER GLORY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S3\n\nNuit du 02 au 03",
+    "zone": "EVER GLORY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "S3\n\nNuit du 02 au 03",
+    "zone": "CMA CGM GRACE BAY\tD2",
+    "types": {}
+  },
+  {
+    "date": "2025-06-02",
+    "shift": "CM",
+    "zone": "1",
+    "types": {}
+  }
+]
